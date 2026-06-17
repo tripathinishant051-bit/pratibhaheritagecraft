@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pratibha Heritage Craft — Handmade With Love, Woven With Heritage</title>
+
+  <!-- Google Fonts: Cormorant Garamond (display) + Lato (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    /* ─────────────────────────────────────────────────
+       Tailwind custom design tokens — brand palette
+    ───────────────────────────────────────────────── */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:    '#F7F4EB',   /* Page background */
+            brown:    '#3D251D',   /* Primary text / dark accents */
+            rose:     '#C48B82',   /* Secondary accent / dusty terracotta */
+            gold:     '#D4AF37',   /* Borders / decorative elements */
+            'gold-light': '#E8D07A',
+            'cream-dark': '#EDE8D5',
+            'brown-light': '#6B3F30',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body:    ['Lato', 'sans-serif'],
+            italic:  ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 24px rgba(61,37,29,0.10)',
+            'card-hover': '0 12px 40px rgba(61,37,29,0.18)',
+            'modal': '0 20px 60px rgba(61,37,29,0.25)',
+          },
+          backgroundImage: {
+            'weave': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.07'%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23D4AF37' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E\")",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ─────────────────────────────────────────────────
+       Base & Global Styles
+    ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #F7F4EB;
+      color: #3D251D;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Gold divider line ── */
+    .gold-rule {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: #D4AF37;
+      margin: 0 auto;
+    }
+
+    /* ── Section label (eyebrow text) ── */
+    .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #C48B82;
+    }
+
+    /* ── Display headings ── */
+    .heading-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.12;
+      color: #3D251D;
+    }
+
+    /* ── Primary button ── */
+    .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: #3D251D;
+      color: #F7F4EB;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid #3D251D;
+      cursor: pointer;
+      transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.18s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: #D4AF37;
+      border-color: #D4AF37;
+      color: #3D251D;
+      transform: translateY(-1px);
+    }
+
+    /* ── Ghost/outline button ── */
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.65rem 1.6rem;
+      background: transparent;
+      color: #3D251D;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid #D4AF37;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.18s ease;
+      text-decoration: none;
+    }
+    .btn-ghost:hover {
+      background: #D4AF37;
+      color: #3D251D;
+      transform: translateY(-1px);
+    }
+
+    /* ── WhatsApp button ── */
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #C48B82;
+      color: #F7F4EB;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.18s ease;
+    }
+    .btn-whatsapp:hover {
+      background: #3D251D;
+      transform: translateY(-1px);
+    }
+
+    /* ─────────────────────────────────────────────────
+       Navigation
+    ───────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+      padding: 1.4rem 0;
+      background: transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(247,244,235,0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(61,37,29,0.09);
+      padding: 0.8rem 0;
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #F7F4EB;
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    #mobile-menu.open { display: flex; }
+
+    /* ─────────────────────────────────────────────────
+       Hero Section
+    ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #F7F4EB;
+    }
+
+    /* Woven texture overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Decorative corner ornament */
+    .corner-ornament {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 1px solid #D4AF37;
+      opacity: 0.35;
+    }
+    .corner-ornament.tl { top: 6rem; left: 2rem; border-right: none; border-bottom: none; }
+    .corner-ornament.tr { top: 6rem; right: 2rem; border-left: none; border-bottom: none; }
+    .corner-ornament.bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+    .corner-ornament.br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
+
+    /* Hero animated text */
+    .hero-word {
+      display: inline-block;
+      animation: fadeSlideUp 0.9s ease both;
+    }
+    .hero-word:nth-child(1) { animation-delay: 0.1s; }
+    .hero-word:nth-child(2) { animation-delay: 0.25s; }
+    .hero-word:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeSlideUp 0.85s ease both; }
+    .delay-1 { animation-delay: 0.55s; }
+    .delay-2 { animation-delay: 0.75s; }
+    .delay-3 { animation-delay: 0.95s; }
+
+    /* ─────────────────────────────────────────────────
+       Marquee Banner
+    ───────────────────────────────────────────────── */
+    .marquee-track {
+      display: flex;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────────────
+       Product Cards
+    ───────────────────────────────────────────────── */
+    .product-card {
+      background: #fff;
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: transform 0.32s cubic-bezier(.25,.8,.25,1),
+                  box-shadow 0.32s cubic-bezier(.25,.8,.25,1),
+                  border-color 0.25s ease;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(61,37,29,0.15);
+      border-color: rgba(212,175,55,0.5);
+    }
+
+    /* Image wrapper with zoom on hover */
+    .product-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .product-img-wrap img,
+    .product-img-wrap .img-placeholder {
+      transition: transform 0.55s cubic-bezier(.25,.8,.25,1);
+    }
+    .product-card:hover .product-img-wrap img,
+    .product-card:hover .product-img-wrap .img-placeholder {
+      transform: scale(1.06);
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.2rem 0.7rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────────
+       Modal
+    ───────────────────────────────────────────────── */
+    #order-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(61,37,29,0.55);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    #order-modal.open { display: flex; }
+
+    .modal-box {
+      background: #F7F4EB;
+      border: 1px solid rgba(212,175,55,0.35);
+      box-shadow: 0 24px 80px rgba(61,37,29,0.28);
+      width: 100%;
+      max-width: 540px;
+      position: relative;
+      animation: modalIn 0.38s cubic-bezier(.34,1.3,.7,1) both;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Form inputs */
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border: 1px solid rgba(212,175,55,0.4);
+      color: #3D251D;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .form-input::placeholder { color: #b5a99a; }
+    .form-input:focus {
+      border-color: #C48B82;
+      box-shadow: 0 0 0 3px rgba(196,139,130,0.12);
+    }
+    .form-label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #6B3F30;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ─────────────────────────────────────────────────
+       About section pattern
+    ───────────────────────────────────────────────── */
+    .about-pattern {
+      background-color: #EDE8D5;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.09'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ─────────────────────────────────────────────────
+       Footer
+    ───────────────────────────────────────────────── */
+    footer { background: #3D251D; }
+
+    /* ─────────────────────────────────────────────────
+       Scroll reveal utility
+    ───────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─────────────────────────────────────────────────
+       Success state
+    ───────────────────────────────────────────────── */
+    #success-msg { display: none; }
+    #success-msg.show { display: block; }
+
+    /* ─────────────────────────────────────────────────
+       Responsive nav link hover
+    ───────────────────────────────────────────────── */
+    .nav-link {
+      position: relative;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3D251D;
+      text-decoration: none;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #D4AF37;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #C48B82; }
+
+    /* scrolled nav links always dark */
+    #navbar.scrolled .nav-link { color: #3D251D; }
+
+    /* ─────────────────────────────────────────────────
+       Responsive tweaks
+    ───────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .corner-ornament { display: none; }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION BAR
+════════════════════════════════════════════════════ -->
+<nav id="navbar" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+
+    <!-- Brand Logo + Name -->
+    <a href="#hero" class="flex items-center gap-3 group" aria-label="Pratibha Heritage Craft home">
+      <!--
+        ┌─────────────────────────────────────────────────┐
+        │  LOGO PLACEHOLDER                               │
+        │  Replace the <div> below with your actual logo: │
+        │  <img src="your-logo.png" alt="PHC Logo"        │
+        │       class="h-10 w-auto" />                    │
+        └─────────────────────────────────────────────────┘
+      -->
+      <div class="h-10 w-10 flex items-center justify-center border border-gold"
+           style="background:#3D251D;">
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:600; color:#D4AF37; font-size:1rem;">P</span>
+      </div>
+      <div class="leading-tight">
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1.05rem; color:#3D251D; letter-spacing:0.04em; display:block;">
+          Pratibha Heritage
+        </span>
+        <span style="font-family:'Lato',sans-serif; font-size:0.58rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#C48B82; display:block;">
+          Craft
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#shop"    class="nav-link">Shop</a>
+      <a href="#about"   class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#shop" class="btn-primary" style="padding:0.5rem 1.4rem; font-size:0.7rem;">
+        Order Now
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2 z-50 relative"
+            aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hamburger-line block w-6 h-0.5 bg-brown transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-brown transition-all duration-300"></span>
+      <span class="hamburger-line block w-4 h-0.5 bg-brown transition-all duration-300 ml-auto"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile Fullscreen Menu ── -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <!-- Close button -->
+  <button id="menu-close" class="absolute top-6 right-6 text-brown text-2xl" aria-label="Close menu">✕</button>
+
+  <!-- Gold ornament -->
+  <span class="gold-rule mb-4"></span>
+
+  <nav class="flex flex-col items-center gap-6">
+    <a href="#shop"    class="nav-link text-xl" onclick="closeMobileMenu()">Shop</a>
+    <a href="#about"   class="nav-link text-xl" onclick="closeMobileMenu()">About</a>
+    <a href="#contact" class="nav-link text-xl" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+
+  <span class="gold-rule mt-4"></span>
+
+  <a href="#shop" class="btn-primary mt-4" onclick="closeMobileMenu()">Order Now</a>
+
+  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; color:#C48B82; font-size:0.85rem; margin-top:2rem;">
+    Handmade With Love, Woven With Heritage
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- Decorative border corners -->
+  <div class="corner-ornament tl"></div>
+  <div class="corner-ornament tr"></div>
+  <div class="corner-ornament bl"></div>
+  <div class="corner-ornament br"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <!-- Eyebrow -->
+    <p class="eyebrow fade-in-up mb-5">✦ Est. with Love ✦</p>
+
+    <!-- Gold rule -->
+    <span class="gold-rule fade-in-up delay-1 mb-7" style="display:block;"></span>
+
+    <!-- Main headline -->
+    <h1 class="heading-display fade-in-up" style="font-size:clamp(2.8rem, 8vw, 5.8rem); margin-bottom:1.2rem;">
+      <span class="hero-word" style="display:block;">Pratibha</span>
+      <span class="hero-word" style="display:block; font-style:italic; color:#C48B82;">Heritage</span>
+      <span class="hero-word" style="display:block;">Craft</span>
+    </h1>
+
+    <!-- Divider with ornament -->
+    <div class="fade-in-up delay-1 flex items-center justify-center gap-3 my-6">
+      <span style="flex:1; max-width:80px; height:1px; background:#D4AF37; opacity:0.6;"></span>
+      <span style="color:#D4AF37; font-size:1rem;">✦</span>
+      <span style="flex:1; max-width:80px; height:1px; background:#D4AF37; opacity:0.6;"></span>
+    </div>
+
+    <!-- Slogan -->
+    <p class="fade-in-up delay-2"
+       style="font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,3vw,1.35rem); font-weight:400; font-style:italic; color:#6B3F30; letter-spacing:0.06em; margin-bottom:2.5rem;">
+      Handmade With Love, Woven With Heritage
+    </p>
+
+    <!-- Sub-copy -->
+    <p class="fade-in-up delay-2"
+       style="font-family:'Lato',sans-serif; font-size:0.88rem; font-weight:300; color:#6B3F30; max-width:420px; margin:0 auto 3rem; line-height:1.8; letter-spacing:0.03em;">
+      Each piece carries the warmth of skilled hands and the stories of generations — crafted for those who cherish the art of the handmade.
+    </p>
+
+    <!-- CTAs -->
+    <div class="fade-in-up delay-3 flex flex-wrap items-center justify-center gap-4">
+      <a href="#shop" class="btn-primary">Explore Crafts</a>
+      <a href="#about" class="btn-ghost">Our Story</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="fade-in-up delay-3 mt-14 flex flex-col items-center gap-2 opacity-50">
+      <span style="font-family:'Lato',sans-serif; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:#3D251D;">Scroll</span>
+      <div style="width:1px; height:40px; background:linear-gradient(to bottom, #3D251D, transparent);"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MARQUEE BANNER
+════════════════════════════════════════════════════ -->
+<div style="background:#3D251D; overflow:hidden; padding:0.85rem 0; border-top:1px solid rgba(212,175,55,0.3); border-bottom:1px solid rgba(212,175,55,0.3);">
+  <div class="marquee-track">
+    <!-- Duplicate items for seamless loop -->
+    <template id="marquee-items">
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#D4AF37; padding:0 2.5rem;">✦ Handwoven Textiles</span>
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#F7F4EB; padding:0 2.5rem;">✦ Heritage Knitting</span>
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#D4AF37; padding:0 2.5rem;">✦ Artisan Crafted</span>
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#F7F4EB; padding:0 2.5rem;">✦ Made With Love</span>
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#D4AF37; padding:0 2.5rem;">✦ Traditional Craft</span>
+      <span style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#F7F4EB; padding:0 2.5rem;">✦ Premium Handmade</span>
+    </template>
+    <!-- JS will duplicate these -->
+    <div id="marquee-content" style="display:flex; white-space:nowrap;"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SHOP — PRODUCT LISTING
+════════════════════════════════════════════════════ -->
+<section id="shop" style="padding:7rem 0 6rem;">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="text-center mb-14 reveal">
+      <p class="eyebrow mb-4">✦ Our Collection ✦</p>
+      <h2 class="heading-display" style="font-size:clamp(2rem,5vw,3.5rem);">Crafted with Heritage</h2>
+      <span class="gold-rule mt-4 mb-5" style="display:block;"></span>
+      <p style="font-family:'Lato',sans-serif; font-size:0.88rem; font-weight:300; color:#6B3F30; max-width:480px; margin:0 auto; line-height:1.9;">
+        Every item is uniquely handcrafted — no two pieces are exactly alike. That's the beauty of the handmade.
+      </p>
+    </div>
+
+    <!-- Product Grid -->
+    <!--
+      ╔═══════════════════════════════════════════════════════╗
+      ║  HOW TO ADD/EDIT PRODUCTS                            ║
+      ║  Find the `products` array in the <script> below     ║
+      ║  and add your product objects. Each object needs:    ║
+      ║    id, name, price, description, badge (optional),   ║
+      ║    badgeColor ('gold'|'rose'), image (URL or path)   ║
+      ╚═══════════════════════════════════════════════════════╝
+    -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Products are rendered by JavaScript below -->
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ABOUT SECTION
+════════════════════════════════════════════════════ -->
+<section id="about" class="about-pattern" style="padding:7rem 0;">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Visual side -->
+      <div class="reveal flex flex-col gap-6">
+        <!-- Placeholder craft image frame -->
+        <div style="position:relative; padding:1.5rem;">
+          <div style="position:absolute; top:0; left:0; width:70%; height:70%; border-top:2px solid #D4AF37; border-left:2px solid #D4AF37; opacity:0.6;"></div>
+          <div style="position:absolute; bottom:0; right:0; width:70%; height:70%; border-bottom:2px solid #D4AF37; border-right:2px solid #D4AF37; opacity:0.6;"></div>
+          <div style="background:#EDE8D5; aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; border:1px solid rgba(212,175,55,0.2);">
+            <!--
+              Replace this placeholder with a real image of your craft/workshop:
+              <img src="about-photo.jpg" alt="Our workshop" style="width:100%; height:100%; object-fit:cover;" />
+            -->
+            <span style="font-size:3rem; opacity:0.4;">🧶</span>
+            <p style="font-family:'Lato',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#C48B82; opacity:0.7;">Your craft photo here</p>
+          </div>
+        </div>
+
+        <!-- Stat row -->
+        <div class="grid grid-cols-3 gap-4 mt-2">
+          <div class="text-center" style="padding:1rem; background:rgba(255,255,255,0.5); border:1px solid rgba(212,175,55,0.2);">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:#3D251D; line-height:1;">100+</p>
+            <p class="eyebrow mt-1" style="font-size:0.6rem;">Happy Clients</p>
+          </div>
+          <div class="text-center" style="padding:1rem; background:rgba(255,255,255,0.5); border:1px solid rgba(212,175,55,0.2);">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:#3D251D; line-height:1;">50+</p>
+            <p class="eyebrow mt-1" style="font-size:0.6rem;">Unique Designs</p>
+          </div>
+          <div class="text-center" style="padding:1rem; background:rgba(255,255,255,0.5); border:1px solid rgba(212,175,55,0.2);">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:#3D251D; line-height:1;">5★</p>
+            <p class="eyebrow mt-1" style="font-size:0.6rem;">Rated Crafts</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="reveal">
+        <p class="eyebrow mb-4">✦ Our Story ✦</p>
+        <h2 class="heading-display mb-6" style="font-size:clamp(2rem,4vw,3rem);">
+          Where Tradition<br/>
+          <em style="color:#C48B82;">Meets Craft</em>
+        </h2>
+        <span class="gold-rule mb-6" style="display:block; margin-left:0;"></span>
+
+        <p style="font-family:'Lato',sans-serif; font-size:0.9rem; font-weight:300; color:#4a2e23; line-height:2; margin-bottom:1.4rem;">
+          Pratibha Heritage Craft was born from a deep love for the ancient art of handknitting and weaving. We believe that every handmade piece carries a soul — the warmth of the artisan's hands, the patience of the process, the beauty of imperfection.
+        </p>
+        <p style="font-family:'Lato',sans-serif; font-size:0.9rem; font-weight:300; color:#4a2e23; line-height:2; margin-bottom:2rem;">
+          Our creations are made with carefully sourced natural yarns and fibres, honouring techniques passed down through generations. From cozy knitted shawls to intricate decorative pieces — each item is a celebration of heritage.
+        </p>
+
+        <!-- USP list -->
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.9rem; margin-bottom:2.2rem;">
+          <li style="display:flex; align-items:center; gap:0.75rem;">
+            <span style="width:6px; height:6px; background:#D4AF37; transform:rotate(45deg); flex-shrink:0;"></span>
+            <span style="font-family:'Lato',sans-serif; font-size:0.85rem; color:#3D251D;">100% handcrafted — no machine replication</span>
+          </li>
+          <li style="display:flex; align-items:center; gap:0.75rem;">
+            <span style="width:6px; height:6px; background:#D4AF37; transform:rotate(45deg); flex-shrink:0;"></span>
+            <span style="font-family:'Lato',sans-serif; font-size:0.85rem; color:#3D251D;">Natural, premium-quality yarns &amp; fibres</span>
+          </li>
+          <li style="display:flex; align-items:center; gap:0.75rem;">
+            <span style="width:6px; height:6px; background:#D4AF37; transform:rotate(45deg); flex-shrink:0;"></span>
+            <span style="font-family:'Lato',sans-serif; font-size:0.85rem; color:#3D251D;">Custom orders welcomed — made just for you</span>
+          </li>
+          <li style="display:flex; align-items:center; gap:0.75rem;">
+            <span style="width:6px; height:6px; background:#D4AF37; transform:rotate(45deg); flex-shrink:0;"></span>
+            <span style="font-family:'Lato',sans-serif; font-size:0.85rem; color:#3D251D;">Shipped with care, packed with love</span>
+          </li>
+        </ul>
+
+        <a href="#shop" class="btn-primary">Browse the Collection</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     TESTIMONIALS (Optional — easy to expand)
+════════════════════════════════════════════════════ -->
+<section style="padding:6rem 0; background:#F7F4EB;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow mb-3">✦ Kind Words ✦</p>
+      <h2 class="heading-display" style="font-size:clamp(1.8rem,4vw,2.8rem);">What Our Customers Say</h2>
+      <span class="gold-rule mt-4" style="display:block;"></span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Testimonial Card -->
+      <div class="reveal" style="background:#fff; border:1px solid rgba(212,175,55,0.2); padding:2rem;">
+        <div style="color:#D4AF37; font-size:1.2rem; margin-bottom:1rem;">★★★★★</div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#3D251D; line-height:1.7; margin-bottom:1.2rem;">
+          "The shawl I ordered was absolutely exquisite. You could feel the love in every stitch — exactly what I hoped for."
+        </p>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#EDE8D5; border:1px solid #D4AF37; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; color:#C48B82;">P</div>
+          <div>
+            <p style="font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:700; color:#3D251D;">Priya Sharma</p>
+            <p style="font-family:'Lato',sans-serif; font-size:0.68rem; color:#C48B82; letter-spacing:0.1em;">Delhi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:#fff; border:1px solid rgba(212,175,55,0.2); padding:2rem;">
+        <div style="color:#D4AF37; font-size:1.2rem; margin-bottom:1rem;">★★★★★</div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#3D251D; line-height:1.7; margin-bottom:1.2rem;">
+          "Ordered a custom baby blanket and it arrived beautifully packed. My family was in tears — it's a heirloom quality piece."
+        </p>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#EDE8D5; border:1px solid #D4AF37; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; color:#C48B82;">A</div>
+          <div>
+            <p style="font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:700; color:#3D251D;">Anita Mehta</p>
+            <p style="font-family:'Lato',sans-serif; font-size:0.68rem; color:#C48B82; letter-spacing:0.1em;">Mumbai</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:#fff; border:1px solid rgba(212,175,55,0.2); padding:2rem;">
+        <div style="color:#D4AF37; font-size:1.2rem; margin-bottom:1rem;">★★★★★</div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#3D251D; line-height:1.7; margin-bottom:1.2rem;">
+          "Gifted this to my mother and she hasn't taken it off. The craftsmanship is truly unmatched — worth every rupee."
+        </p>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#EDE8D5; border:1px solid #D4AF37; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; color:#C48B82;">R</div>
+          <div>
+            <p style="font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:700; color:#3D251D;">Rajesh Verma</p>
+            <p style="font-family:'Lato',sans-serif; font-size:0.68rem; color:#C48B82; letter-spacing:0.1em;">Varanasi</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CONTACT SECTION
+════════════════════════════════════════════════════ -->
+<section id="contact" style="padding:7rem 0; background:#EDE8D5;">
+  <div class="max-w-3xl mx-auto px-6 text-center reveal">
+    <p class="eyebrow mb-4">✦ Get in Touch ✦</p>
+    <h2 class="heading-display mb-6" style="font-size:clamp(2rem,5vw,3.2rem);">
+      Have a custom request<br/>or a question?
+    </h2>
+    <span class="gold-rule mb-6" style="display:block;"></span>
+    <p style="font-family:'Lato',sans-serif; font-size:0.88rem; font-weight:300; color:#4a2e23; line-height:1.9; margin-bottom:2.5rem;">
+      We'd love to hear from you. Whether you want a custom handmade piece or have any queries about our crafts, just drop us a message on WhatsApp and we'll respond with love.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-10">
+      <!--
+        ┌───────────────────────────────────────────────────┐
+        │  CHANGE YOUR WHATSAPP NUMBER HERE (contact link)  │
+        │  Replace 919876543210 with your number:           │
+        │  Format: country code + number, no + or spaces    │
+        └───────────────────────────────────────────────────┘
+      -->
+      <a href="https://wa.me/919876543210?text=Hello!%20I%20have%20a%20custom%20order%20enquiry."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-whatsapp"
+         style="border-radius:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+
+      <a href="mailto:your@email.com" class="btn-ghost">
+        Send an Email
+      </a>
+    </div>
+
+    <!-- Social / quick info -->
+    <div class="flex flex-wrap justify-center gap-8 mt-4">
+      <div>
+        <p class="eyebrow mb-1" style="font-size:0.6rem;">Email</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:#3D251D;">your@email.com</p>
+      </div>
+      <div>
+        <p class="eyebrow mb-1" style="font-size:0.6rem;">WhatsApp</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:#3D251D;">+91 98765 43210</p>
+      </div>
+      <div>
+        <p class="eyebrow mb-1" style="font-size:0.6rem;">Ships From</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:#3D251D;">Varanasi, India</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer style="padding:4rem 0 2rem;">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Top footer row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-8" style="border-bottom:1px solid rgba(212,175,55,0.2);">
+
+      <!-- Brand column -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div style="width:36px; height:36px; border:1px solid #D4AF37; display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',serif; font-weight:700; color:#D4AF37; font-size:0.9rem;">P</span>
+          </div>
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif; font-weight:700; color:#F7F4EB; font-size:1rem; letter-spacing:0.04em;">Pratibha Heritage Craft</p>
+          </div>
+        </div>
+        <p style="font-family:'Lato',sans-serif; font-size:0.8rem; font-weight:300; color:rgba(247,244,235,0.55); line-height:1.8;">
+          Handmade with love. Every piece tells a story of tradition, skill, and care.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <p style="font-family:'Lato',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#D4AF37; margin-bottom:1.2rem;">Quick Links</p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem;">
+          <li><a href="#shop" style="font-family:'Lato',sans-serif; font-size:0.82rem; color:rgba(247,244,235,0.65); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='rgba(247,244,235,0.65)'">Shop</a></li>
+          <li><a href="#about" style="font-family:'Lato',sans-serif; font-size:0.82rem; color:rgba(247,244,235,0.65); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='rgba(247,244,235,0.65)'">About Us</a></li>
+          <li><a href="#contact" style="font-family:'Lato',sans-serif; font-size:0.82rem; color:rgba(247,244,235,0.65); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='rgba(247,244,235,0.65)'">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Tagline / quote -->
+      <div>
+        <p style="font-family:'Lato',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#D4AF37; margin-bottom:1.2rem;">Our Promise</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:rgba(247,244,235,0.75); line-height:1.7;">
+          "Every stitch is a thread of love — woven into your life."
+        </p>
+        <span style="display:block; width:40px; height:1px; background:#D4AF37; opacity:0.5; margin-top:1.2rem;"></span>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-3 pt-6">
+      <p style="font-family:'Lato',sans-serif; font-size:0.7rem; color:rgba(247,244,235,0.35); letter-spacing:0.05em;">
+        © 2025 Pratibha Heritage Craft. All rights reserved.
+      </p>
+      <p style="font-family:'Lato',sans-serif; font-size:0.7rem; color:rgba(247,244,235,0.35); letter-spacing:0.05em;">
+        Handmade With Love, Woven With Heritage ✦
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ORDER MODAL
+════════════════════════════════════════════════════ -->
+<div id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+
+    <!-- Modal header -->
+    <div style="background:#3D251D; padding:1.6rem 2rem; position:relative;">
+      <p class="eyebrow mb-1" style="color:#D4AF37; font-size:0.6rem;">✦ Complete Your Order ✦</p>
+      <h3 id="modal-title" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:#F7F4EB;">Order Details</h3>
+      <p id="modal-product-name" style="font-family:'Lato',sans-serif; font-size:0.78rem; color:#C48B82; margin-top:0.2rem; letter-spacing:0.05em;"></p>
+      <!-- Close -->
+      <button id="modal-close" aria-label="Close order form"
+              style="position:absolute; top:1.2rem; right:1.4rem; background:none; border:none; color:rgba(247,244,235,0.5); font-size:1.3rem; cursor:pointer; transition:color 0.2s;"
+              onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='rgba(247,244,235,0.5)'">
+        ✕
+      </button>
+    </div>
+
+    <!-- Gold stripe -->
+    <div style="height:3px; background:linear-gradient(90deg,#D4AF37,#C48B82,#D4AF37);"></div>
+
+    <!-- Form -->
+    <form id="order-form" novalidate style="padding:2rem;">
+
+      <!-- Success message (shown after submit) -->
+      <div id="success-msg" style="text-align:center; padding:1.5rem 0;">
+        <div style="font-size:2.5rem; margin-bottom:0.8rem;">✓</div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:#3D251D; margin-bottom:0.5rem;">Order Sent!</p>
+        <p style="font-family:'Lato',sans-serif; font-size:0.82rem; color:#6B3F30;">
+          WhatsApp has been opened with your order details. We'll confirm shortly!
+        </p>
+        <button type="button" onclick="closeModal()"
+                class="btn-primary" style="margin-top:1.5rem; font-size:0.7rem;">
+          Close
+        </button>
+      </div>
+
+      <!-- Form fields -->
+      <div id="form-fields" class="flex flex-col gap-5">
+
+        <!-- Customer Name -->
+        <div>
+          <label for="f-name" class="form-label">Full Name *</label>
+          <input id="f-name" type="text" class="form-input" placeholder="e.g. Priya Sharma" required autocomplete="name" />
+        </div>
+
+        <!-- Mobile Number -->
+        <div>
+          <label for="f-mobile" class="form-label">Mobile Number *</label>
+          <input id="f-mobile" type="tel" class="form-input" placeholder="e.g. +91 98765 43210" required autocomplete="tel" />
+        </div>
+
+        <!-- WhatsApp Number -->
+        <div>
+          <label for="f-whatsapp" class="form-label">WhatsApp Number *</label>
+          <input id="f-whatsapp" type="tel" class="form-input" placeholder="If different from mobile" autocomplete="tel" />
+          <p style="font-size:0.7rem; color:#9a7060; margin-top:0.3rem; font-family:'Lato',sans-serif;">Leave blank if same as mobile number</p>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="f-email" class="form-label">Email Address</label>
+          <input id="f-email" type="email" class="form-input" placeholder="e.g. you@example.com" autocomplete="email" />
+        </div>
+
+        <!-- Delivery Address -->
+        <div>
+          <label for="f-address" class="form-label">Complete Delivery Address *</label>
+          <textarea id="f-address" class="form-input" rows="3"
+                    placeholder="House/Flat No., Street, Area, City, State, PIN code" required
+                    style="resize:vertical;"></textarea>
+        </div>
+
+        <!-- Special Notes -->
+        <div>
+          <label for="f-notes" class="form-label">Special Instructions <span style="font-weight:300; text-transform:none; letter-spacing:0;">(optional)</span></label>
+          <textarea id="f-notes" class="form-input" rows="2"
+                    placeholder="Any colour preference, size request, gift message..."
+                    style="resize:vertical;"></textarea>
+        </div>
+
+        <!-- Error message -->
+        <p id="form-error" style="display:none; font-family:'Lato',sans-serif; font-size:0.78rem; color:#c0392b; background:rgba(192,57,43,0.08); padding:0.6rem 0.8rem; border-left:3px solid #c0392b;"></p>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-whatsapp w-full justify-center" style="padding:0.9rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Send Order via WhatsApp
+        </button>
+
+        <p style="text-align:center; font-family:'Lato',sans-serif; font-size:0.72rem; color:#9a7060; line-height:1.6;">
+          Clicking above will open WhatsApp with your order details pre-filled. We'll confirm availability and payment details with you directly.
+        </p>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════ -->
+<script>
+  /* ═══════════════════════════════════════════════════
+     CONFIGURATION — EDIT THESE VALUES
+  ════════════════════════════════════════════════════ */
+
+  /**
+   * ┌─────────────────────────────────────────────────────────────────┐
+   * │  YOUR WHATSAPP NUMBER                                           │
+   * │  Format: country code + number, NO '+', NO spaces or dashes     │
+   * │  Example: India +91 98765 43210  →  919876543210                │
+   * └─────────────────────────────────────────────────────────────────┘
+   */
+  const WHATSAPP_NUMBER = '919876543210'; // ← CHANGE THIS
+
+  /**
+   * ┌─────────────────────────────────────────────────────────────────┐
+   * │  PRODUCT CATALOGUE                                              │
+   * │  Add, remove, or edit products here.                            │
+   * │  Fields:                                                        │
+   * │    id          → unique identifier (number)                     │
+   * │    name        → product name                                   │
+   * │    price       → price as string (e.g. "₹1,200")               │
+   * │    description → short product description                      │
+   * │    badge       → optional label (e.g. "New", "Bestseller")      │
+   * │    badgeColor  → 'gold' or 'rose'                               │
+   * │    image       → URL or relative path to product image          │
+   * │                  Use null to show placeholder                    │
+   * └─────────────────────────────────────────────────────────────────┘
+   */
+  const products = [
+    {
+      id: 1,
+      name: 'Heritage Knitted Shawl',
+      price: '₹1,800',
+      description: 'A luxuriously soft shawl hand-knitted in fine merino wool. Intricate traditional pattern, perfect for gifting or personal indulgence.',
+      badge: 'Bestseller',
+      badgeColor: 'gold',
+      image: null, // Replace with: 'images/shawl.jpg'
+    },
+    {
+      id: 2,
+      name: 'Artisan Baby Blanket',
+      price: '₹2,200',
+      description: 'Crafted from the softest organic cotton yarn. Gentle on delicate skin, woven with extra love for the little ones in your life.',
+      badge: 'New',
+      badgeColor: 'rose',
+      image: null,
+    },
+    {
+      id: 3,
+      name: 'Handwoven Table Runner',
+      price: '₹950',
+      description: 'A stunning handwoven table runner that brings warmth and elegance to any dining space. Available in multiple heritage colour palettes.',
+      badge: null,
+      badgeColor: null,
+      image: null,
+    },
+    {
+      id: 4,
+      name: 'Knitted Woollen Socks',
+      price: '₹450',
+      description: 'Cosy, thick-knit woollen socks for the cold months. Designed with heritage patterns and made to last many winters.',
+      badge: null,
+      badgeColor: null,
+      image: null,
+    },
+    {
+      id: 5,
+      name: 'Macramé Wall Hanging',
+      price: '₹1,400',
+      description: 'A beautiful boho-heritage macramé wall hanging — handcrafted with natural cotton rope. Makes a perfect home décor statement.',
+      badge: 'Custom Available',
+      badgeColor: 'rose',
+      image: null,
+    },
+    {
+      id: 6,
+      name: 'Personalized Gift Hamper',
+      price: 'From ₹2,500',
+      description: 'A curated hamper of our handcrafted items — personalised just for you or your loved one. Beautifully packaged in heritage wrapping.',
+      badge: 'Custom',
+      badgeColor: 'gold',
+      image: null,
+    },
+  ];
+
+  /* ═══════════════════════════════════════════════════
+     STATE
+  ════════════════════════════════════════════════════ */
+  let selectedProduct = null;
+
+  /* ═══════════════════════════════════════════════════
+     MARQUEE — duplicate content for seamless loop
+  ════════════════════════════════════════════════════ */
+  (function initMarquee() {
+    const container = document.getElementById('marquee-content');
+    const template  = document.getElementById('marquee-items');
+    // Insert twice for seamless loop
+    for (let i = 0; i < 2; i++) {
+      const clone = document.importNode(template.content, true);
+      container.appendChild(clone);
+    }
+  })();
+
+  /* ═══════════════════════════════════════════════════
+     RENDER PRODUCT GRID
+  ════════════════════════════════════════════════════ */
+  function renderProducts() {
+    const grid = document.getElementById('product-grid');
+
+    products.forEach((product, index) => {
+      const badgeBg    = product.badgeColor === 'gold' ? '#D4AF37' : '#C48B82';
+      const badgeColor = product.badgeColor === 'gold' ? '#3D251D' : '#F7F4EB';
+
+      const card = document.createElement('div');
+      card.className = 'product-card reveal';
+      card.style.animationDelay = `${index * 0.08}s`;
+
+      card.innerHTML = `
+        <!-- Product Image -->
+        <div class="product-img-wrap" style="aspect-ratio:1; background:#EDE8D5;">
+          ${product.image
+            ? `<img src="${product.image}" alt="${product.name}"
+                    style="width:100%; height:100%; object-fit:cover; display:block;" />`
+            : `<div class="img-placeholder" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.8rem; background:#EDE8D5;">
+                 <span style="font-size:2.5rem; opacity:0.3;">🧶</span>
+                 <p style="font-family:'Lato',sans-serif; font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#C48B82; opacity:0.6;">Product Image</p>
+               </div>`
+          }
+          ${product.badge
+            ? `<div class="badge" style="background:${badgeBg}; color:${badgeColor};">
+                 ${product.badge}
+               </div>`
+            : ''
+          }
+        </div>
+
+        <!-- Card Body -->
+        <div style="padding:1.4rem 1.5rem 1.6rem;">
+          <!-- Price + Name -->
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.5rem; margin-bottom:0.5rem;">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:#3D251D; line-height:1.3; flex:1;">
+              ${product.name}
+            </h3>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:700; color:#C48B82; white-space:nowrap;">
+              ${product.price}
+            </span>
+          </div>
+
+          <!-- Divider -->
+          <div style="width:30px; height:1px; background:#D4AF37; opacity:0.6; margin-bottom:0.8rem;"></div>
+
+          <!-- Description -->
+          <p style="font-family:'Lato',sans-serif; font-size:0.8rem; font-weight:300; color:#6B3F30; line-height:1.75; margin-bottom:1.3rem;">
+            ${product.description}
+          </p>
+
+          <!-- CTA Button -->
+          <button
+            class="btn-whatsapp w-full justify-center"
+            onclick="openOrderModal(${product.id})"
+            style="width:100%;"
+            aria-label="Order ${product.name} via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Order via WhatsApp
+          </button>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+
+    // Trigger scroll reveal check after rendering
+    checkReveal();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     MODAL LOGIC
+  ════════════════════════════════════════════════════ */
+
+  /** Open the order modal for a given product ID */
+  function openOrderModal(productId) {
+    selectedProduct = products.find(p => p.id === productId);
+    if (!selectedProduct) return;
+
+    // Update modal header with product info
+    document.getElementById('modal-product-name').textContent =
+      `${selectedProduct.name} — ${selectedProduct.price}`;
+
+    // Reset form state
+    document.getElementById('order-form').reset();
+    document.getElementById('form-error').style.display = 'none';
+    document.getElementById('success-msg').classList.remove('show');
+    document.getElementById('form-fields').style.display = '';
+
+    // Show modal
+    const modal = document.getElementById('order-modal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Focus first input for accessibility
+    setTimeout(() => document.getElementById('f-name').focus(), 100);
+  }
+
+  /** Close the modal */
+  function closeModal() {
+    document.getElementById('order-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    selectedProduct = null;
+  }
+
+  // Close on backdrop click
+  document.getElementById('order-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Close button
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ═══════════════════════════════════════════════════
+     FORM VALIDATION & WHATSAPP SUBMISSION
+  ════════════════════════════════════════════════════ */
+  document.getElementById('order-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitOrder();
+  });
+
+  function submitOrder() {
+    // Get values
+    const name     = document.getElementById('f-name').value.trim();
+    const mobile   = document.getElementById('f-mobile').value.trim();
+    const whatsapp = document.getElementById('f-whatsapp').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const address  = document.getElementById('f-address').value.trim();
+    const notes    = document.getElementById('f-notes').value.trim();
+    const errorEl  = document.getElementById('form-error');
+
+    // Basic validation
+    if (!name) {
+      showError(errorEl, 'Please enter your full name.'); return;
+    }
+    if (!mobile) {
+      showError(errorEl, 'Please enter your mobile number.'); return;
+    }
+    if (!address) {
+      showError(errorEl, 'Please enter your complete delivery address.'); return;
+    }
+
+    errorEl.style.display = 'none';
+
+    /* ───────────────────────────────────────────────────
+       Build the WhatsApp message
+       This formats ALL order details into a clean, readable
+       message that opens pre-filled in WhatsApp.
+    ─────────────────────────────────────────────────── */
+    const message = [
+      '🛍️ *NEW ORDER — Pratibha Heritage Craft*',
+      '─────────────────────────',
+      '',
+      `📦 *Product:* ${selectedProduct.name}`,
+      `💰 *Price:* ${selectedProduct.price}`,
+      '',
+      '👤 *Customer Details*',
+      `• Name: ${name}`,
+      `• Mobile: ${mobile}`,
+      `• WhatsApp: ${whatsapp || mobile}`,
+      `• Email: ${email || 'Not provided'}`,
+      '',
+      '🏠 *Delivery Address*',
+      address,
+      '',
+      notes ? `📝 *Special Instructions:*\n${notes}\n` : '',
+      '─────────────────────────',
+      '📲 _Please confirm availability, delivery timeline, and payment details._',
+      '',
+      '✨ _Pratibha Heritage Craft — Handmade With Love, Woven With Heritage_',
+    ].filter(line => line !== null).join('\n');
+
+    // Encode and open WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    const waURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+    // Open WhatsApp in new tab
+    window.open(waURL, '_blank', 'noopener,noreferrer');
+
+    // Show success state inside modal
+    document.getElementById('form-fields').style.display = 'none';
+    document.getElementById('success-msg').classList.add('show');
+  }
+
+  function showError(el, message) {
+    el.textContent = message;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ═══════════════════════════════════════════════════
+     NAVBAR SCROLL EFFECT
+  ════════════════════════════════════════════════════ */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  /* ═══════════════════════════════════════════════════
+     MOBILE MENU
+  ════════════════════════════════════════════════════ */
+  const menuToggle  = document.getElementById('menu-toggle');
+  const mobileMenu  = document.getElementById('mobile-menu');
+  const menuClose   = document.getElementById('menu-close');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileMenu.classList.add('open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  menuClose.addEventListener('click', closeMobileMenu);
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SCROLL REVEAL (Intersection Observer)
+  ════════════════════════════════════════════════════ */
+  function checkReveal() {
+    const elements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      elements.forEach(el => observer.observe(el));
+    } else {
+      // Fallback for older browsers
+      elements.forEach(el => el.classList.add('visible'));
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     INIT
+  ════════════════════════════════════════════════════ */
+  document.addEventListener('DOMContentLoaded', function() {
+    renderProducts(); // Build product grid from data above
+    checkReveal();    // Set up scroll reveal
+
+    // Re-check on scroll
+    window.addEventListener('scroll', checkReveal, { passive: true });
+  });
+</script>
+
+</body>
+</html>
